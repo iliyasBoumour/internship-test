@@ -1,17 +1,9 @@
 import React, { useState } from "react";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import { Toolbar, Typography, Link, Box, AppBar } from "@mui/material";
-import { Burger, Menu } from "./style";
-// const MyAppBar = styled(AppBar)
-// (({ theme }) => {
-
-//   return {
-//     backgroundColor:'aqua',
-//     padding: theme.spacing(1),
-//   };
-// });
-
+import { Toolbar, Typography, Box, AppBar, IconButton } from "@mui/material";
+import { Burger, Menu, MyLink } from "./style";
+const items = ["Home", "About", "Shop", "Blog", "Contact"];
 const Index = () => {
   const [isopen, setIsopen] = useState(false);
   return (
@@ -26,21 +18,13 @@ const Index = () => {
             Marque
           </Typography>
           <Menu open={isopen}>
-            <Typography variant="h6" conponent="p">
-              Home
-            </Typography>
-            <Typography variant="h6" conponent="p">
-              About
-            </Typography>
-            <Typography variant="h6" conponent="p">
-              Shop
-            </Typography>
-            <Typography variant="h6" conponent="p">
-              Blog
-            </Typography>
-            <Typography variant="h6" conponent="h3">
-              Contact
-            </Typography>
+            {items.map((item, i) => (
+              <MyLink key={i}>
+                <Typography variant="h6" conponent="p">
+                  {item}
+                </Typography>
+              </MyLink>
+            ))}
           </Menu>
           <Box
             sx={{
@@ -51,8 +35,8 @@ const Index = () => {
               alignItems: "center",
             }}
           >
-            <PersonOutlineIcon />
-            <WorkOutlineIcon />
+            <PersonOutlineIcon sx={{ cursor: "pointer" }} />
+            <WorkOutlineIcon sx={{ cursor: "pointer" }} />
             <Burger open={isopen} onClick={() => setIsopen(!isopen)}>
               <div></div>
             </Burger>

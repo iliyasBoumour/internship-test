@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box } from "@mui/material";
+import { Box, Link } from "@mui/material";
 export const Burger = styled("div")`
   z-index: 10;
   position: relative;
@@ -56,6 +56,7 @@ export const Menu = styled(Box)`
     position: fixed;
     display: flex;
     background-color: #fff;
+    z-index: 10;
     right: 0;
     left: 0;
     bottom: 0;
@@ -66,5 +67,34 @@ export const Menu = styled(Box)`
     gap: 2rem;
     transform: ${(props) =>
       props.open ? "translateX(0px)" : "translateX(100%)"};
+  }
+`;
+
+export const MyLink = styled(Link)`
+  color: #000;
+  min-width: 4rem;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgb(100, 98, 98);
+    background: linear-gradient(
+      270deg,
+      rgba(100, 98, 98, 1) 0%,
+      rgba(100, 98, 98, 0) 100%
+    );
+    transition: all 0.2s ease-in-out;
+    transform: scaleX(0);
+  }
+  &:hover::after {
+    transform: scaleX(1);
   }
 `;

@@ -5,7 +5,6 @@ import { styled } from "@mui/system";
 import Header from "./components/Header";
 const MyContainer = styled(Container, {})`
   margin-top: 1rem;
-  background-color: red;
 `;
 
 export default function App() {
