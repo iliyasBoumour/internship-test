@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
-import { Box, Link } from "@mui/material";
+import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 export const Burger = styled("div")`
   z-index: 10;
   position: relative;

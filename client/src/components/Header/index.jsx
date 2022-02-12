@@ -1,8 +1,5 @@
-import React from "react";
 import { Header, ImgCont, TextCont, OneGrid } from "./style";
 import { Grid, useMediaQuery, Typography } from "@mui/material";
-import img1 from "./images/1.png";
-import img2 from "./images/2.png";
 
 const index = () => {
   const isDesktop = useMediaQuery("(min-width:900px)");
@@ -11,7 +8,7 @@ const index = () => {
       <Grid container sx={{ height: "100%" }}>
         <OneGrid item md={8}>
           <ImgCont>
-            <img src={img1} alt="1" />
+            <img src="/images/1.png" alt="1" />
           </ImgCont>
           <TextCont sx={{ flex: 1, px: 1 }}>
             <Typography align="center" variant="h4" component="h2">
@@ -28,7 +25,7 @@ const index = () => {
               </Typography>
             </TextCont>
             <ImgCont sx={{ flex: 1.3 }}>
-              <img src={img2} alt="2" />
+              <img src="/images/2.png" alt="2" />
             </ImgCont>
           </OneGrid>
         )}

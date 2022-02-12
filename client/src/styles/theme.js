@@ -85,7 +85,6 @@ const theme = createTheme({
           width: "100%",
         },
         body: {
-          overflow: "hidden",
           display: "flex",
           flex: "1 1 auto",
           flexDirection: "column",

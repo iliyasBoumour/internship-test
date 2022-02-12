@@ -8,6 +8,7 @@ import {
   AppBar,
 } from "@mui/material";
 
-const MyContainer = styled(Container)`
-  /* padding: theme.spacing(2); */
+export const SimpleLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
 `;
