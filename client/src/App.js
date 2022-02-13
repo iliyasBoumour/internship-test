@@ -8,7 +8,11 @@ import Navbar from "./components/Navbar";
 // import ScrollTop from "./components/ScrollTop";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
-import Products from "./pages/Products";
+import Products from "./pages/Shop";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Shipping from "./pages/Shipping";
 
 export default function App() {
   return (
@@ -25,7 +29,11 @@ export default function App() {
             <Routes>
               <Route path="/" exact element={<Home />} />
               <Route path="/products/:id" element={<Product />} />
-              <Route path="/products" element={<Products />} />
+              <Route path="/shop/:id" element={<Products />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/shipping" element={<Shipping />} />
             </Routes>
           </Container>
         </Router>

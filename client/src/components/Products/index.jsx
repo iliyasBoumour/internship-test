@@ -1,65 +1,9 @@
 import React from "react";
-import { Grid, useMediaQuery, Box, Typography } from "@mui/material";
+import { Grid, Box, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
 import Product from "../product";
-const products = [
-  {
-    id: 1,
-    name: "msi",
-    categorie: "laptop",
-    image: "/images/1.png",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis, excepturi",
-  },
-  {
-    id: 2,
-    name: "msi",
-    categorie: "laptop",
-    image: "/images/1.png",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis, excepturi",
-  },
-  {
-    id: 3,
-    name: "msi",
-    categorie: "laptop",
-    image: "/images/1.png",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis, excepturi",
-  },
-  {
-    id: 4,
-    name: "msi",
-    categorie: "laptop",
-    image: "/images/1.png",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis, excepturi",
-  },
-  {
-    id: 5,
-    name: "msi",
-    categorie: "laptop",
-    image: "/images/1.png",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis, excepturi",
-  },
-  {
-    id: 6,
-    name: "msi",
-    categorie: "laptop",
-    image: "/images/1.png",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis, excepturi",
-  },
-  {
-    id: 7,
-    name: "msi",
-    categorie: "laptop",
-    image: "/images/1.png",
-    description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis, excepturi",
-  },
-];
-const index = () => {
+const Index = () => {
+  const { loading, error, products } = useSelector((state) => state.products);
   return (
     <Box sx={{ marginTop: "4rem" }}>
       <Typography
@@ -71,14 +15,20 @@ const index = () => {
         Our Products
       </Typography>
       <Grid container spacing={3}>
-        {products.map((p) => (
-          <Grid key={p.id} item xs={12} sm={6} md={4} lg={3}>
-            <Product {...p} />
-          </Grid>
-        ))}
+        {loading ? (
+          <h1>loading...</h1>
+        ) : error ? (
+          <p>{error}</p>
+        ) : (
+          products.map((p) => (
+            <Grid key={p._id} item xs={12} sm={6} md={4} lg={3}>
+              <Product {...p} />
+            </Grid>
+          ))
+        )}
       </Grid>
     </Box>
   );
 };
 
-export default index;
+export default Index;

@@ -160,7 +160,7 @@ const theme = createTheme({
       main: "#fff",
     },
     secondary: {
-      main: "#bd744c",
+      main: "#000",
     },
     success: {
       main: "#14B8A6",

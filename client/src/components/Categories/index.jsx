@@ -1,38 +1,19 @@
 import React from "react";
-import {
-  Grid,
-  useMediaQuery,
-  Typography,
-  Card,
-  CardActionArea,
-  CardMedia,
-} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Grid, Typography } from "@mui/material";
 import Button from "../Button";
+import { useSelector } from "react-redux";
 import { ImgCont } from "./style";
-const data = [
-  {
-    id: 1,
-    name: "laptop",
-    image: "/images/1.png",
-  },
-  {
-    id: 2,
-    name: "laptop",
-    image: "/images/1.png",
-  },
-  {
-    id: 3,
-    name: "laptop",
-    image: "/images/1.png",
-  },
-  {
-    id: 4,
-    name: "laptop",
-    image: "/images/1.png",
-  },
-];
-const index = () => {
-  const dataD = [data.slice(0, 2), data.slice(2)];
+import Loading from "../Loading";
+import { SimpleLink } from "../../styles";
+
+const Index = () => {
+  const { loading, error, categories } = useSelector(
+    (state) => state.categories
+  );
+  const navigate = useNavigate();
+
+  const dataD = [categories.slice(0, 2), categories.slice(2)];
   return (
     <Grid container sx={{ marginTop: "1rem" }}>
       <Grid
@@ -56,29 +37,43 @@ const index = () => {
           magni modi suscipit sed consectetur, iste commodi enim vitae quam
           accusantium?
         </Typography>
-        <Button value={"All Collections"} />
+
+        <Button
+          onclick={() => {
+            navigate(`/shop/0`);
+          }}
+          value={"All Collections"}
+        />
       </Grid>
-      <Grid container={true} item md={8}>
-        {dataD.map((t, i) => (
-          <Grid
-            key={i}
-            item
-            xs={6}
-            sx={{ display: "flex", flexDirection: "column" }}
-          >
-            {t.map((c) => (
-              <ImgCont key={c.id}>
-                <Typography variant="h5" component="h2">
-                  {c.name}
-                </Typography>
-                <img src={c.image} alt={c.name} />
-              </ImgCont>
-            ))}
-          </Grid>
-        ))}
-      </Grid>
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <Loading message={error} />
+      ) : (
+        <Grid container={true} item md={8}>
+          {dataD.map((t, i) => (
+            <Grid
+              key={i}
+              item
+              xs={6}
+              sx={{ display: "flex", flexDirection: "column" }}
+            >
+              {t.map((c) => (
+                <SimpleLink key={c._id} to={`/shop/${c._id}`}>
+                  <ImgCont>
+                    <Typography variant="h5" component="h2">
+                      {c.name}
+                    </Typography>
+                    <img src={c.image} alt={c.name} />
+                  </ImgCont>
+                </SimpleLink>
+              ))}
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </Grid>
   );
 };
 
-export default index;
+export default Index;

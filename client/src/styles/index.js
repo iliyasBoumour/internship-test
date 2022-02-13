@@ -1,14 +1,7 @@
 import { styled } from "@mui/system";
-import {
-  Card,
-  Container,
-  Toolbar,
-  Typography,
-  Link,
-  AppBar,
-} from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const SimpleLink = styled(Link)`
   text-decoration: none;
-  color: inherit;
+  color: ${(props) => props.color || "inherit"}; ;
 `;

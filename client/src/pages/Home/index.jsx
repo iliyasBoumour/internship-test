@@ -3,7 +3,17 @@ import Categories from "../../components/Categories";
 import Products from "../../components/Products";
 import React from "react";
 
-const index = () => {
+import { useDispatch } from "react-redux";
+import { getProducts } from "../../redux/actions/productActions";
+import { getCategories } from "../../redux/actions/categoryActions";
+
+const Index = () => {
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(getProducts(0));
+    dispatch(getCategories());
+  }, [dispatch]);
+
   return (
     <>
       <Header />
@@ -13,4 +23,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
