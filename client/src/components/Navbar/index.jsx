@@ -41,6 +41,10 @@ const Index = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const profile = () => {
+    setAnchorEl(null);
+    return navigate("/profile");
+  };
   const signOut = () => {
     dispatch(logout());
     setAnchorEl(null);
@@ -97,7 +101,7 @@ const Index = () => {
                     "aria-labelledby": "basic-button",
                   }}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={profile}>Profile</MenuItem>
                   <MenuItem onClick={signOut}>Logout</MenuItem>
                 </MuiMenu>
               </div>
